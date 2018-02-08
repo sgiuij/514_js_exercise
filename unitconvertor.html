@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>converter</title>
+	<script type="text/javascript" src=""></script>
+	<style type="text/css">
+		body {
+		    color: #222;
+		    background-color: rgb(236,226,217);
+		    text-align: center;
+		    padding: 0;
+		    min-height: 100%;
+		    font-weight: bold;
+		    font-size: 12pt;
+		}
+
+	</style>
+</head>
+<body>
+	<div id = "header">
+		<h3> Welcome to my Unit Converter</h3>
+		<h4> Yue Shen</h3>
+	</div>
+
+	<div id="content">
+		Enter a value and choose the units to convert <input type="" name="" id="input_value">
+		<div >
+			<select id="input_units">
+			  <option value="inches">Inches</option>
+			  <option value="feet">Feet</option>
+			  <option value="meters">Meters</option>
+			</select>
+		</div>
+
+		<div >
+			<select id="output_units">
+			  <option value="inches">Inches</option>
+			  <option value="feet">Feet</option>
+			  <option value="meters">Meters</option>
+			</select>
+		</div>
+		<button id="convertBtn" onclick="convertFunction()"> Convert!</button>
+		<div id="result"></div>
+	</div>
+	<script type="text/javascript" type="text/javascript">
+		function ready(eventHandler) {
+			if (document.attachEvent ? document.readyState === "complete" : 
+				                         document.readyState !== "loading"){
+				eventHandler();
+			} else {
+				document.addEventListener("DOMContentLoaded", eventHandler);
+			}
+		}
+		function convertFunction(){
+			console.log("fff")
+			let input_value = document.getElementById('input_value').value;
+			if (isNaN(Number(input_value)) ){
+				document.getElementById("result").innerHTML= " Input is not a number"
+			}else{
+				let input_unit = document.getElementById('input_units').value;
+				let output_unit = document.getElementById('output_units').value;
+				console.log(input_unit)
+				let answer = input_value;
+				if (input_unit === "inches"){
+					answer = Number(input_value)*0.0254;
+				}else if (input_unit === "feet"){
+					answer = Number(input_value)*0.3048;
+				}
+				if (output_unit === "inches"){
+					answer = Number(answer)/0.0254;
+				}else if (output_unit === "feet") {
+					answer = Number(answer)/0.3048;
+				}
+				answer = answer.toPrecision(3);
+				console.log(answer);
+				document.getElementById("result").innerHTML= "<h2>" + input_value + " " 
+				+ input_unit + " is equal to " + answer + " " + output_unit + "</h2>";
+			}
+			
+		};
+	</script>
+
+
+</body>
+</html>
