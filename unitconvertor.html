@@ -29,6 +29,9 @@
 			  <option value="inches">Inches</option>
 			  <option value="feet">Feet</option>
 			  <option value="meters">Meters</option>
+			  <option value="yard">Yard</option>
+			  <option value="miles">Miles</option>
+			  <option value="kilometers">Kilometers</option>
 			</select>
 		</div>
 
@@ -37,6 +40,9 @@
 			  <option value="inches">Inches</option>
 			  <option value="feet">Feet</option>
 			  <option value="meters">Meters</option>
+			  <option value="yard">Yard</option>
+			  <option value="miles">Miles</option>
+			  <option value="kilometers">Kilometers</option>
 			</select>
 		</div>
 		<button id="convertBtn" onclick="convertFunction()"> Convert!</button>
@@ -65,11 +71,23 @@
 					answer = Number(input_value)*0.0254;
 				}else if (input_unit === "feet"){
 					answer = Number(input_value)*0.3048;
+				}else if (input_unit === "yard"){
+					answer = Number(input_value)*0.9144;
+				}else if (input_unit === "miles"){
+					answer = Number(input_value)*1609.34;
+				}else if (input_unit === "kilometers"){
+					answer = Number(input_value)*1000;
 				}
 				if (output_unit === "inches"){
 					answer = Number(answer)/0.0254;
 				}else if (output_unit === "feet") {
 					answer = Number(answer)/0.3048;
+				}else if (input_unit === "yard"){
+					answer = Number(input_value)/0.9144;
+				}else if (input_unit === "miles"){
+					answer = Number(input_value)/1609.34;
+				}else if (input_unit === "kilometers"){
+					answer = Number(input_value)/1000;
 				}
 				answer = answer.toPrecision(3);
 				console.log(answer);
