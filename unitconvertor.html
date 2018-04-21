@@ -49,23 +49,14 @@
 		<div id="result"></div>
 	</div>
 	<script type="text/javascript" type="text/javascript">
-		function ready(eventHandler) {
-			if (document.attachEvent ? document.readyState === "complete" : 
-				                         document.readyState !== "loading"){
-				eventHandler();
-			} else {
-				document.addEventListener("DOMContentLoaded", eventHandler);
-			}
-		}
+
 		function convertFunction(){
-			console.log("fff")
 			let input_value = document.getElementById('input_value').value;
 			if (isNaN(Number(input_value)) ){
 				document.getElementById("result").innerHTML= " Input is not a number"
 			}else{
 				let input_unit = document.getElementById('input_units').value;
 				let output_unit = document.getElementById('output_units').value;
-				console.log(input_unit)
 				let answer = input_value;
 				if (input_unit === "inches"){
 					answer = Number(input_value)*0.0254;
@@ -79,18 +70,17 @@
 					answer = Number(input_value)*1000;
 				}
 				if (output_unit === "inches"){
-					answer = Number(answer)/0.0254;
+					answer = Number(answer)*39.3701;
 				}else if (output_unit === "feet") {
-					answer = Number(answer)/0.3048;
-				}else if (input_unit === "yard"){
-					answer = Number(input_value)/0.9144;
-				}else if (input_unit === "miles"){
-					answer = Number(input_value)/1609.34;
-				}else if (input_unit === "kilometers"){
-					answer = Number(input_value)/1000;
+					answer = Number(answer)*3.28084;
+				}else if (output_unit === "yard"){
+					answer = Number(answer)*1.09361;
+				}else if (output_unit === "miles"){
+					answer = Number(answer)*0.000621371;
+				}else if (output_unit === "kilometers"){
+					answer = Number(answer)*0.001;
 				}
 				answer = answer.toPrecision(3);
-				console.log(answer);
 				document.getElementById("result").innerHTML= "<h2>" + input_value + " " 
 				+ input_unit + " is equal to " + answer + " " + output_unit + "</h2>";
 			}
